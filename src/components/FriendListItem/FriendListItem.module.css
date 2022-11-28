@@ -1,0 +1,32 @@
+.item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 360px;
+    height: 130px;
+    margin: 7px;
+    border: 1px solid #858585;
+    border-radius: 3px;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);
+  }
+  .avatar {
+    width: 100px;
+    height: 100px;
+    background-color: #858585;
+    border-radius: 10px;
+  }
+  .name {
+    margin-left: 18px;
+    font-size: 28px;
+    font-weight: 500;
+  }
+  .onLine {
+    margin: 15px;
+    font-size: 55px;
+    color:#2ECC71;
+  }
+  .offLine {
+    margin: 15px;
+    font-size: 55px;
+    color:#E74C3C;
+  }
