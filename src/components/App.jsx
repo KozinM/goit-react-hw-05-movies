@@ -1,29 +1,27 @@
-import Profile from './Profile/Profile';
-import user from '../json/user.json'
-import Statistics from './Statistics/Statistics';
-import statisticData from '../json/data.json';
-import FriendList from './FriendList/FriendList';
-import friends from '../json/friends.json';
-import TransactionHistory from './TransactionsHistory/TransactionHistory';
-import transactions from '../json/transactions.json';
+import { lazy } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
+import { Layout } from './layout/layout';
+const Home = lazy(() => import('../pages/home/home'));
+const Movies = lazy(() => import('../pages/movies/movies'));
+const MovieDetails = lazy(() => import('../pages/moviesDetails/movieDetails'));
+const Cast = lazy(() => import('../components/cast/cast'));
+const Reviews = lazy(() => import('../components/reviews/reviews'));
+
 
 function App() {
   return (
-    <div className="App">
-      <Profile
-        name={user.name}
-        tag={user.tag}
-        location={user.location}
-        avatar={user.avatar}
-        stats={user.stats}
-      />
-
-      <Statistics title="Upload stats" stats={statisticData} />
-      
-      <FriendList friends={friends} />
-
-      <TransactionHistory items={transactions} />
-    </div>
+    <Routes>
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} />
+      <Route path="movies" element={<Movies />} />
+      <Route path="movies/:movieId" element={<MovieDetails />}>
+        <Route path="cast" element={<Cast />} />
+        <Route path="reviews" element={<Reviews />} />
+      </Route>
+      <Route path='*' element={<Navigate to="/" replace/>}/> 
+    </Route>
+  </Routes>
   );
 }
 
